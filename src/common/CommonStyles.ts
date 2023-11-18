@@ -39,4 +39,19 @@ export const commonStyles = StyleSheet.create({
   justifyBetween: {
     justifyContent: 'space-between',
   },
+  flexRowWrap: {
+    flexWrap: 'wrap',
+  },
+  listContainer: {
+    flex: 1,
+    gap: 20,
+    justifyContent: 'space-between',
+  },
+  image: {
+    width: '90%',
+    height: 'auto',
+    maxHeight: 100,
+    objectFit: 'contain',
+    aspectRatio: 1,
+  },
 });

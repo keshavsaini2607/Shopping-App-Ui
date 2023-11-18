@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   B2,
   Box,
   Container,
   FlexBetweenContainer,
   FlexColBetweenContainer,
-  FlexWrapContainer,
   H1,
   H3,
   HomeHeader,
@@ -15,8 +14,23 @@ import {
 import {commonStyles} from '../common/CommonStyles';
 import OfferCard from '../components/OfferCard';
 import ProductCard from '../components/ProductCard';
+import {useAppDispatch, useAppSelector} from '../context/hooks';
+import {fetchProducts} from '../context/slices/productsSlice';
+import {Product} from '../common/interface/Product.interface';
+import {FlatList, View} from 'react-native';
+import Loading from '../components/Loading';
 
 const Home = () => {
+  const dispatch = useAppDispatch();
+
+  const {isLoading, products, error} = useAppSelector(state => state.product);
+
+  console.log({products});
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
   return (
     <Container>
       <HomeHeader style={commonStyles.containerPadding}>
@@ -60,17 +74,19 @@ const Home = () => {
         <OfferCard />
         <OfferCard />
       </ScrollView>
-      <FlexWrapContainer style={[commonStyles.containerPadding]}>
+      <View style={[commonStyles.containerPadding]}>
         <H1>Recommended</H1>
-        <FlexWrapContainer>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </FlexWrapContainer>
-      </FlexWrapContainer>
+        <FlatList
+          data={products}
+          keyExtractor={(item: Product) => item.id.toString()}
+          renderItem={({item}: {item: Product}) => (
+            <ProductCard product={item} />
+          )}
+          contentContainerStyle={commonStyles.listContainer}
+          numColumns={2}
+          ListEmptyComponent={isLoading ? <Loading /> : null}
+        />
+      </View>
     </Container>
   );
 };
