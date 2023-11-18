@@ -19,8 +19,13 @@ import {fetchProducts} from '../context/slices/productsSlice';
 import {Product} from '../common/interface/Product.interface';
 import {FlatList, View} from 'react-native';
 import Loading from '../components/Loading';
+import {StackNavigationProp} from '@react-navigation/stack';
 
-const Home = () => {
+type props = {
+  navigation: StackNavigationProp<any>;
+};
+
+const Home: React.FC<props> = ({navigation}) => {
   const dispatch = useAppDispatch();
 
   const {isLoading, products, error} = useAppSelector(state => state.product);
@@ -80,7 +85,7 @@ const Home = () => {
           data={products}
           keyExtractor={(item: Product) => item.id.toString()}
           renderItem={({item}: {item: Product}) => (
-            <ProductCard product={item} />
+            <ProductCard product={item} navigation={navigation} />
           )}
           contentContainerStyle={commonStyles.listContainer}
           numColumns={2}

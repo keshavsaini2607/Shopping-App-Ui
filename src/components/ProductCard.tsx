@@ -10,10 +10,11 @@ import {
 import {commonStyles} from '../common/CommonStyles';
 import {Product} from '../common/interface/Product.interface';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '../router/stacks/MainStack';
 
 type props = {
   product: Product;
-  navigation: StackNavigationProp<any>;
+  navigation: StackNavigationProp<RootStackParamList>;
 };
 
 const ProductCard: React.FC<props> = ({product, navigation}) => {
@@ -23,7 +24,9 @@ const ProductCard: React.FC<props> = ({product, navigation}) => {
       : require('../assets/icons/imgBlackPlaceholder.png');
   return (
     <ProductCardContainer
-      onPress={() => navigation.navigate('Product')}
+      onPress={() =>
+        navigation.navigate('Product', {id: product.id, navigation})
+      }
       style={[commonStyles.secondaryBackground, commonStyles.containerPadding]}>
       <Box style={commonStyles.justifyBetween}>
         <Image

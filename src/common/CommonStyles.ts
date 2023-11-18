@@ -11,6 +11,9 @@ export const commonStyles = StyleSheet.create({
   colorBlack: {
     color: '#000000',
   },
+  colorPrimary: {
+    color: '#2B4BA1',
+  },
   containerPadding: {
     padding: 20,
   },
@@ -23,6 +26,11 @@ export const commonStyles = StyleSheet.create({
   icon: {
     height: 50,
     width: 50,
+  },
+  smallIcon: {
+    width: 25,
+    height: 25,
+    objectFit: 'contain',
   },
   backgroundOrange: {
     backgroundColor: '#F9B023',
@@ -53,5 +61,21 @@ export const commonStyles = StyleSheet.create({
     maxHeight: 100,
     objectFit: 'contain',
     aspectRatio: 1,
+  },
+  marginTop: {
+    marginTop: 20,
+  },
+  widthMaxContent: {
+    flex: 0,
+    alignSelf: 'flex-start',
+  },
+  paddingButton: {
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+  },
+  paddingTag: {
+    paddingHorizontal: 10,
+    paddingVertical: 2,
+    width: 90,
   },
 });

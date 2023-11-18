@@ -27,6 +27,9 @@ export const B1 = styled.Text`
 export const B2 = styled.Text`
   font-size: 14px;
 `;
+export const Label = styled.Text`
+  font-size: 12px;
+`;
 export const SearchBar = styled.TextInput`
   width: 90%;
   background: rgba(0, 0, 0, 0.4);
@@ -38,6 +41,7 @@ export const FlexBetweenContainer = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 export const FlexColBetweenContainer = styled.View`
   display: flex;
@@ -48,6 +52,13 @@ export const FlexColBetweenContainer = styled.View`
 export const Box = styled.View`
   display: flex;
   flex-direction: column;
+`;
+export const RowBox = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
 `;
 export const OfferCardContainer = styled.View`
   display: flex;
@@ -80,4 +91,22 @@ export const FlexWrapContainer = styled.View`
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
+`;
+
+export const Button = styled.Pressable`
+  background: #2b4ba1;
+  border-radius: 30px;
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const BorderButton = styled.Pressable`
+  border: 1px solid #2b4ba1;
+  border-radius: 30px;
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
