@@ -57,6 +57,8 @@ export const commonStyles = StyleSheet.create({
   listContainer: {
     flex: 1,
     gap: 20,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
   },
   image: {

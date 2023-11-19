@@ -15,15 +15,17 @@ import {RootStackParamList} from '../router/stacks/MainStack';
 type props = {
   product: Product;
   navigation: StackNavigationProp<RootStackParamList>;
+  index: number;
 };
 
-const ProductCard: React.FC<props> = ({product, navigation}) => {
+const ProductCard: React.FC<props> = ({product, navigation, index}) => {
   const imgUri =
     product.images && product.images.length > 0
       ? {uri: product.images[0]}
       : require('../assets/icons/imgBlackPlaceholder.png');
   return (
     <ProductCardContainer
+      index={index}
       onPress={() =>
         navigation.navigate('Product', {id: product.id, navigation})
       }

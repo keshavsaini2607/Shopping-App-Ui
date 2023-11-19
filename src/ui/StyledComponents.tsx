@@ -1,4 +1,5 @@
-import styled from 'styled-components/native';
+import {Pressable} from 'react-native';
+import styled, {css} from 'styled-components/native';
 
 export const Container = styled.ScrollView`
   flex: 1;
@@ -75,7 +76,9 @@ export const ScrollView = styled.ScrollView`
   flex: 1;
 `;
 
-export const ProductCardContainer = styled.Pressable`
+export const ProductCardContainer = styled(({index, ...rest}) => (
+  <Pressable {...rest} />
+))`
   width: 170px;
   height: 170px;
   padding: 20px;
@@ -83,14 +86,19 @@ export const ProductCardContainer = styled.Pressable`
   border-radius: 20px;
   flex-direction: column;
   justify-content: space-between;
-`;
 
+  ${props =>
+    props.index % 2 === 1 &&
+    css`
+      margin-left: 20px;
+    `}
+`;
 export const FlexWrapContainer = styled.View`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 20px;
+  gap: 30px;
 `;
 
 export const Button = styled.Pressable`

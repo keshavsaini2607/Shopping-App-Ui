@@ -17,18 +17,19 @@ import ProductCard from '../components/ProductCard';
 import {useAppDispatch, useAppSelector} from '../context/hooks';
 import {fetchProducts} from '../context/slices/productsSlice';
 import {Product} from '../common/interface/Product.interface';
-import {FlatList, View} from 'react-native';
+import {FlatList, Image, View} from 'react-native';
 import Loading from '../components/Loading';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '../router/stacks/MainStack';
 
 type props = {
-  navigation: StackNavigationProp<any>;
+  navigation: StackNavigationProp<RootStackParamList>;
 };
 
 const Home: React.FC<props> = ({navigation}) => {
   const dispatch = useAppDispatch();
 
-  const {isLoading, products, error} = useAppSelector(state => state.product);
+  const {isLoading, products} = useAppSelector(state => state.product);
 
   console.log({products});
 
@@ -40,10 +41,20 @@ const Home: React.FC<props> = ({navigation}) => {
     <Container>
       <HomeHeader style={commonStyles.containerPadding}>
         <FlexColBetweenContainer>
-          <H3 style={[commonStyles.colorWhite, commonStyles.fontBold]}>
-            Hey, Rahul
-          </H3>
-          <SearchBar placeholder="Search Products or Store" />
+          <FlexBetweenContainer>
+            <H3 style={[commonStyles.colorWhite, commonStyles.fontBold]}>
+              Hey, Rahul
+            </H3>
+            <Image
+              source={require('../assets/icons/bagwhite.png')}
+              style={commonStyles.smallIcon}
+            />
+          </FlexBetweenContainer>
+          <SearchBar
+            placeholder="Search Products or Store"
+            placeholderTextColor="#ffffff"
+            style={{opacity: 0.7}}
+          />
           <FlexBetweenContainer>
             <Box>
               <B2
@@ -83,9 +94,10 @@ const Home: React.FC<props> = ({navigation}) => {
         <H1>Recommended</H1>
         <FlatList
           data={products}
+          showsVerticalScrollIndicator={false}
           keyExtractor={(item: Product) => item.id.toString()}
-          renderItem={({item}: {item: Product}) => (
-            <ProductCard product={item} navigation={navigation} />
+          renderItem={({item, index}: {item: Product; index: number}) => (
+            <ProductCard product={item} navigation={navigation} index={index} />
           )}
           contentContainerStyle={commonStyles.listContainer}
           numColumns={2}

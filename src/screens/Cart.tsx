@@ -107,11 +107,11 @@ const Cart: React.FC<Props> = ({navigation}) => {
           </FlexBetweenContainer>
           <FlexBetweenContainer>
             <B2>Delivery</B2>
-            <B2>$2</B2>
+            <B2>{items.length > 0 ? '$2' : 'NA'}</B2>
           </FlexBetweenContainer>
           <FlexBetweenContainer>
             <B2>Subtotal</B2>
-            <B2>${getCartTotal() + 2}</B2>
+            <B2>{items.length > 0 ? `${getCartTotal() + 2}` : 'NA'}</B2>
           </FlexBetweenContainer>
           <Button
             style={[

@@ -37,13 +37,19 @@ const Product: React.FC<Props> = ({route, navigation}) => {
   const {items} = useAppSelector(state => state.cart);
   const {data, isLoading} = useQuery(['product', id], () => getProductById(id));
 
-  console.log({items});
+  const isProductInCart = () => {
+    return items.find((item: CartItem) => item.id === id);
+  };
 
   if (isLoading) {
     return <Loading />;
   }
 
   const addToCart = () => {
+    if (isProductInCart()) {
+      navigation.navigate('Cart');
+      return;
+    }
     let item: CartItem = {
       id: data.id,
       name: data.title,
@@ -52,6 +58,11 @@ const Product: React.FC<Props> = ({route, navigation}) => {
       image: data.images[0],
     };
     dispatch(addItem(item));
+  };
+
+  const buyNow = () => {
+    addToCart();
+    navigation.navigate('Cart');
   };
 
   return (
@@ -100,10 +111,12 @@ const Product: React.FC<Props> = ({route, navigation}) => {
         </RowBox>
         <FlexBetweenContainer style={commonStyles.marginTop}>
           <BorderButton style={commonStyles.paddingButton} onPress={addToCart}>
-            <B2 style={commonStyles.colorPrimary}>Add To Cart</B2>
+            <B2 style={commonStyles.colorPrimary}>
+              {isProductInCart() ? 'Go To Cart' : 'Add To Cart'}
+            </B2>
           </BorderButton>
-          <Button style={commonStyles.paddingButton}>
-            <B2 style={commonStyles.colorWhite}>Add To Cart</B2>
+          <Button style={commonStyles.paddingButton} onPress={buyNow}>
+            <B2 style={commonStyles.colorWhite}>Buy Now</B2>
           </Button>
         </FlexBetweenContainer>
         <Box style={commonStyles.marginTop}>
