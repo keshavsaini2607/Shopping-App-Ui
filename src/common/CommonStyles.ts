@@ -78,4 +78,27 @@ export const commonStyles = StyleSheet.create({
     paddingVertical: 2,
     width: 90,
   },
+  roundedBackground: {
+    backgroundColor: '#F8F9FB',
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  bottomSheet: {
+    backgroundColor: '#F8F9FB',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+  },
+  listPaddingBottom: {
+    paddingBottom: 60,
+  },
+  wFull: {
+    width: '100%',
+  },
 });

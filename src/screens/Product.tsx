@@ -48,6 +48,7 @@ const Product: React.FC<Props> = ({route, navigation}) => {
       name: data.title,
       price: data.price,
       quantity: 1,
+      image: data.images[0],
     };
     dispatch(addItem(item));
   };

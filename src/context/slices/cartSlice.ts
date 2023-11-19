@@ -6,6 +6,7 @@ export interface CartItem {
   name: string;
   price: number;
   quantity: number;
+  image: string;
 }
 
 export interface CartState {
@@ -47,6 +48,9 @@ const cartSlice = createSlice({
       );
 
       if (itemToUpdate) {
+        if (itemToUpdate && action.payload.quantity < 1) {
+          removeItem(action.payload.id);
+        }
         itemToUpdate.quantity = action.payload.quantity;
       }
     },
