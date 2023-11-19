@@ -1,4 +1,4 @@
-import {Pressable, Image, Dimensions, View} from 'react-native';
+import {Pressable, Image, View} from 'react-native';
 import React from 'react';
 import {
   B1,
@@ -28,7 +28,6 @@ type Props = {
 const Cart: React.FC<Props> = ({navigation}) => {
   const dispatch = useAppDispatch();
   const {items} = useAppSelector(state => state.cart);
-  const screenHeight = Dimensions.get('window').height;
 
   const changeQuantity = (item: CartItem, operation: string) => {
     switch (operation) {

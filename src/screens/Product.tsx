@@ -22,6 +22,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {Rating} from 'react-native-ratings';
 import {useAppDispatch, useAppSelector} from '../context/hooks';
 import {CartItem, addItem} from '../context/slices/cartSlice';
+import ImageSlider from '../components/ImageSlider';
 
 type ProductScreenRouteProp = RouteProp<RootStackParamList, 'Product'>;
 
@@ -54,8 +55,8 @@ const Product: React.FC<Props> = ({route, navigation}) => {
   };
 
   return (
-    <Container style={commonStyles.containerPadding}>
-      <FlexBetweenContainer>
+    <Container>
+      <FlexBetweenContainer style={commonStyles.paddingSmall}>
         <Pressable onPress={() => navigation.goBack()}>
           <Image
             source={require('../assets/icons/back.png')}
@@ -69,7 +70,7 @@ const Product: React.FC<Props> = ({route, navigation}) => {
           />
         </Pressable>
       </FlexBetweenContainer>
-      <View style={commonStyles.marginTop}>
+      <View style={[commonStyles.containerPadding]}>
         <H1>{data.brand}</H1>
         <H1 style={commonStyles.fontBold}>{data.title}</H1>
         <RowBox>
@@ -83,8 +84,10 @@ const Product: React.FC<Props> = ({route, navigation}) => {
           <B2>110 Reviews</B2>
         </RowBox>
       </View>
-      <View style={commonStyles.marginTop}></View>
-      <View style={commonStyles.marginTop}>
+      <View>
+        <ImageSlider data={data.images} />
+      </View>
+      <View style={[commonStyles.marginTop, commonStyles.containerPadding]}>
         <RowBox>
           <H4 style={[commonStyles.colorPrimary, commonStyles.fontBold]}>
             ${`${data.price}`}

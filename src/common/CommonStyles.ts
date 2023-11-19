@@ -17,6 +17,10 @@ export const commonStyles = StyleSheet.create({
   containerPadding: {
     padding: 20,
   },
+  paddingSmall: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
+  },
   fontBold: {
     fontWeight: '600',
   },
