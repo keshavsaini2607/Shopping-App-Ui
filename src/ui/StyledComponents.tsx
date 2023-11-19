@@ -80,7 +80,7 @@ export const ProductCardContainer = styled(({index, ...rest}) => (
   <Pressable {...rest} />
 ))`
   width: 170px;
-  height: 200px;
+  height: 210px;
   padding: 20px;
   display: flex;
   border-radius: 20px;

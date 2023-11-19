@@ -111,14 +111,15 @@ const Cart: React.FC<Props> = ({navigation}) => {
           </FlexBetweenContainer>
           <FlexBetweenContainer>
             <B2>Subtotal</B2>
-            <B2>{items.length > 0 ? `${getCartTotal() + 2}` : 'NA'}</B2>
+            <B2>${items.length > 0 ? `${getCartTotal() + 2}` : 'NA'}</B2>
           </FlexBetweenContainer>
           <Button
             style={[
               commonStyles.paddingButton,
               commonStyles.wFull,
               commonStyles.marginTop,
-            ]}>
+            ]}
+            disabled={items.length < 1}>
             <B1 style={commonStyles.colorWhite}>Proceed To Checkout</B1>
           </Button>
         </Box>

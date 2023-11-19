@@ -15,6 +15,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useAppDispatch, useAppSelector} from '../context/hooks';
 import {addToFavourites} from '../context/slices/favouritesSlice';
 import {CartItem, addItem} from '../context/slices/cartSlice';
+import Toast from 'react-native-toast-message';
 
 type props = {
   product: Product;
@@ -43,6 +44,10 @@ const ProductCard: React.FC<props> = ({product, navigation, index}) => {
       image: product.images[0],
     };
     dispatch(addItem(item));
+    Toast.show({
+      type: 'success',
+      text1: 'Added to cart',
+    });
   };
 
   const imgUri =
@@ -64,7 +69,7 @@ const ProductCard: React.FC<props> = ({product, navigation, index}) => {
         onPress={() =>
           navigation.navigate('Product', {id: product.id, navigation})
         }>
-        <Box style={commonStyles.justifyBetween}>
+        <Box style={[commonStyles.justifyBetween, {marginVertical: 8}]}>
           <Image
             source={imgUri}
             style={[commonStyles.image, commonStyles.alignCenter]}

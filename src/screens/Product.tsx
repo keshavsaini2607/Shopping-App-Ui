@@ -23,6 +23,7 @@ import {Rating} from 'react-native-ratings';
 import {useAppDispatch, useAppSelector} from '../context/hooks';
 import {CartItem, addItem} from '../context/slices/cartSlice';
 import ImageSlider from '../components/ImageSlider';
+import Toast from 'react-native-toast-message';
 
 type ProductScreenRouteProp = RouteProp<RootStackParamList, 'Product'>;
 
@@ -58,6 +59,10 @@ const Product: React.FC<Props> = ({route, navigation}) => {
       image: data.images[0],
     };
     dispatch(addItem(item));
+    Toast.show({
+      type: 'success',
+      text1: 'Added to cart',
+    });
   };
 
   const buyNow = () => {
