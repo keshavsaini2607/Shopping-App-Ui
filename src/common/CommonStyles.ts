@@ -60,6 +60,7 @@ export const commonStyles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
+    paddingBottom: 100,
   },
   image: {
     width: '90%',
@@ -106,5 +107,16 @@ export const commonStyles = StyleSheet.create({
   },
   wFull: {
     width: '100%',
+  },
+  cartCounter: {
+    position: 'absolute',
+    top: -9,
+    right: -10,
+    backgroundColor: '#F9B023',
+    color: '#ffffff',
+    width: 20,
+    textAlign: 'center',
+    height: 20,
+    borderRadius: 20,
   },
 });

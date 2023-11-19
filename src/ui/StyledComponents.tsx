@@ -80,7 +80,7 @@ export const ProductCardContainer = styled(({index, ...rest}) => (
   <Pressable {...rest} />
 ))`
   width: 170px;
-  height: 170px;
+  height: 200px;
   padding: 20px;
   display: flex;
   border-radius: 20px;
@@ -118,3 +118,4 @@ export const BorderButton = styled.Pressable`
   justify-content: center;
   align-items: center;
 `;
+

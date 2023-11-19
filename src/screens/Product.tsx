@@ -1,4 +1,4 @@
-import {Image, Pressable, View} from 'react-native';
+import {Image, Pressable, Text, View} from 'react-native';
 import React from 'react';
 import {RouteProp} from '@react-navigation/native';
 import {RootStackParamList} from '../router/stacks/MainStack';
@@ -79,6 +79,9 @@ const Product: React.FC<Props> = ({route, navigation}) => {
             source={require('../assets/icons/bag.png')}
             style={commonStyles.smallIcon}
           />
+          {items.length > 0 && (
+            <Text style={commonStyles.cartCounter}>{items?.length}</Text>
+          )}
         </Pressable>
       </FlexBetweenContainer>
       <View style={[commonStyles.containerPadding]}>

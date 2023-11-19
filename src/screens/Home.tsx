@@ -17,7 +17,7 @@ import ProductCard from '../components/ProductCard';
 import {useAppDispatch, useAppSelector} from '../context/hooks';
 import {fetchProducts} from '../context/slices/productsSlice';
 import {Product} from '../common/interface/Product.interface';
-import {FlatList, Image, View} from 'react-native';
+import {FlatList, Image, Pressable, Text, View} from 'react-native';
 import Loading from '../components/Loading';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../router/stacks/MainStack';
@@ -31,8 +31,7 @@ const Home: React.FC<props> = ({navigation}) => {
 
   const {isLoading, products} = useAppSelector(state => state.product);
 
-  console.log({products});
-
+  const {items} = useAppSelector(state => state.cart);
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
@@ -45,10 +44,15 @@ const Home: React.FC<props> = ({navigation}) => {
             <H3 style={[commonStyles.colorWhite, commonStyles.fontBold]}>
               Hey, Rahul
             </H3>
-            <Image
-              source={require('../assets/icons/bagwhite.png')}
-              style={commonStyles.smallIcon}
-            />
+            <Pressable onPress={() => navigation.navigate('Cart')}>
+              <Image
+                source={require('../assets/icons/bagwhite.png')}
+                style={commonStyles.smallIcon}
+              />
+              {items.length > 0 && (
+                <Text style={commonStyles.cartCounter}>{items?.length}</Text>
+              )}
+            </Pressable>
           </FlexBetweenContainer>
           <SearchBar
             placeholder="Search Products or Store"
@@ -84,7 +88,7 @@ const Home: React.FC<props> = ({navigation}) => {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{gap: 20}}
+        contentContainerStyle={{gap: 20, paddingRight: 50}}
         style={[commonStyles.containerPadding]}>
         <OfferCard />
         <OfferCard />

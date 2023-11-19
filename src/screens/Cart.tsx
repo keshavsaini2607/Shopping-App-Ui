@@ -72,7 +72,7 @@ const Cart: React.FC<Props> = ({navigation}) => {
           showsVerticalScrollIndicator={false}>
           {items.map((item: CartItem) => (
             <FlexBetweenContainer style={commonStyles.marginTop} key={item.id}>
-              <RowBox>
+              <RowBox style={{width: '40%'}}>
                 <Image source={{uri: item?.image}} style={commonStyles.icon} />
                 <Box>
                   <B2 style={commonStyles.fontBold}>{item.name}</B2>
